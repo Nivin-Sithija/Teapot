@@ -28,10 +28,14 @@ Long-form research write-ups live in [`research/`](research/) as Markdown.
 ## Quick start
 
 ```bash
-nvm use            # Node 20+
+nvm use            # Node 22 LTS — see .nvmrc
 npm ci
 npm run dev        # http://localhost:3000
 ```
+
+`engines` still accepts Node 20 so existing local setups keep working, but
+Node 20 went end-of-life in April 2026 and no longer receives security
+patches. CI builds on 22; upgrading locally is recommended.
 
 No environment variables are needed to run the site. With Supabase unset, all
 content is served from the bundled corpus in `src/lib/data/seed/`.

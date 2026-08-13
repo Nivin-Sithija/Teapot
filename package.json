@@ -39,5 +39,6 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "//engines": "Node 20 is EOL as of April 2026 and kept only so existing local setups keep working. CI and .nvmrc target 22."
 }
