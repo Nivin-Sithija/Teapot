@@ -1,0 +1,184 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens.
+
+  The palette is lifted from the "From Leaf to Cup" reference: warm bone paper,
+  deep forest green for structure, and brewed-amber as the single accent. Stage
+  colours (defined per-stage in src/lib/data/stages.ts) walk from fresh green to
+  amber, so the accent is the end of that journey rather than an arbitrary
+  highlight hue.
+
+  Every colour is defined on bare `:root` first; the dark block only *overrides*.
+*/
+@theme {
+  --color-paper: #f5f3ea;
+  --color-paper-2: #efede1;
+  --color-surface: #fbfaf4;
+  --color-surface-2: #f2f0e4;
+  --color-line: #ddd9c6;
+  --color-line-soft: #e8e5d6;
+
+  --color-ink: #212e26;
+  --color-ink-2: #47554a;
+  --color-muted: #6f7b6d;
+  --color-faint: #98a196;
+
+  --color-forest: #1f3d2b;
+  --color-leaf: #4e7c3f;
+  --color-sage: #7ba85c;
+  --color-amber: #c6862f;
+  --color-amber-soft: #e0a64e;
+  --color-clay: #a66a30;
+
+  /* Maturity semantics — used on opportunity chips. */
+  --color-mature: #3f7a4a;
+  --color-emerging: #b0812c;
+  --color-gap: #b4552f;
+
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 14px;
+
+  /* Motion: one easing curve everywhere, three durations. */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 520ms;
+}
+
+:root {
+  --shadow-card: 0 1px 2px rgb(31 61 43 / 0.04), 0 8px 24px -12px rgb(31 61 43 / 0.18);
+  --shadow-drawer: -24px 0 64px -32px rgb(31 61 43 / 0.35);
+  --scene-fog: #eceadd;
+  color-scheme: light;
+}
+
+
+
+
+:root[data-theme='dark'] {
+  --color-paper: #131a15;
+  --color-paper-2: #10160f;
+  --color-surface: #1b241d;
+  --color-surface-2: #212b23;
+  --color-line: #2f3c32;
+  --color-line-soft: #27332a;
+
+  --color-ink: #e9ebe0;
+  --color-ink-2: #c2cbbd;
+  --color-muted: #94a091;
+  --color-faint: #6f7c6e;
+
+  --color-forest: #8fbe7a;
+  --color-leaf: #7cae5f;
+  --color-sage: #9ecb80;
+  --color-amber: #e0a64e;
+  --color-amber-soft: #eec078;
+  --color-clay: #cf8b4a;
+
+  --color-mature: #6cb377;
+  --color-emerging: #ddab52;
+  --color-gap: #e0865c;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  --shadow-drawer: -24px 0 64px -32px rgb(0 0 0 / 0.7);
+  --scene-fog: #121a14;
+  color-scheme: dark;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Small-caps eyebrow used above section headings throughout the drawer. */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* Scrollbars — thin and themed, so the drawer doesn't sprout a grey OS bar. */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 999px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+canvas {
+  touch-action: none;
+  display: block;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up var(--dur-base) var(--ease-out-soft) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
