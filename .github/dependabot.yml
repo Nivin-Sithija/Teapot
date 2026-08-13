@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    # Patch/minor noise from the 3D stack lands as one PR instead of six.
+    groups:
+      three-stack:
+        patterns:
+          - 'three'
+          - '@types/three'
+          - '@react-three/*'
+      dev-tooling:
+        dependency-type: development
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

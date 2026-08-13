@@ -1,0 +1,43 @@
+{
+  "name": "ath-udawwa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An interactive 3D atlas of the tea production pipeline and the AI/ML research behind each stage.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "db:seed": "tsx supabase/seed.ts",
+    "db:reset": "tsx supabase/seed.ts --reset"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.0.6",
+    "@react-three/fiber": "^9.1.2",
+    "@supabase/supabase-js": "^2.49.4",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.7.4",
+    "lucide-react": "^0.503.0",
+    "next": "^15.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "three": "^0.175.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.4",
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@types/three": "^0.175.0",
+    "eslint": "^9.25.0",
+    "eslint-config-next": "^15.3.1",
+    "tailwindcss": "^4.1.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

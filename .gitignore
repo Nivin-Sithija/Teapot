@@ -1,0 +1,29 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+
+.env
+.env.local
+.env*.local
+
+.DS_Store
+*.pem
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Editor / OS cruft
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+
+# Research PDFs are uploaded to Supabase storage rather than versioned here —
+# drop them in research/pdfs/ locally and run `npm run db:seed`.
+research/pdfs/
